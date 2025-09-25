@@ -1,0 +1,52 @@
+{
+	"name": "df_empMaster",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "gen2_empMaster_ds",
+						"type": "DatasetReference"
+					},
+					"name": "srcEmpMaster"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "sql_empMaster_ds",
+						"type": "DatasetReference"
+					},
+					"name": "sqlEmpMaster"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          EmployeeID as integer,",
+				"          LastName as string,",
+				"          FirstName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> srcEmpMaster",
+				"srcEmpMaster sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          EmployeeID as long,",
+				"          LastName as string,",
+				"          FirstName as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sqlEmpMaster"
+			]
+		}
+	}
+}

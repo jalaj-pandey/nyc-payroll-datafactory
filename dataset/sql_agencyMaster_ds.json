@@ -1,0 +1,30 @@
+{
+	"name": "sql_agencyMaster_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_database_LS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "sql_ds"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AgencyID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "AgencyName",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "AgencyMasterSql"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

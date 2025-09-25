@@ -1,0 +1,9 @@
+{
+	"name": "jalajdatafactory",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2aa9759f-58b3-40a7-9e58-559d065a9886",
+		"tenantId": "f958e84a-92b8-439f-a62d-4f45996b6d07"
+	}
+}

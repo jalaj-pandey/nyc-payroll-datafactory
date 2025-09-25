@@ -1,0 +1,27 @@
+{
+	"name": "gen2_nyc_payroll_summary_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datalake_gen2_LS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "gen2_ds"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "dirstaging",
+				"fileSystem": "adlsnycpayroll-jalaj-pandey"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,34 @@
+{
+	"name": "sql_empMaster_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_database_LS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "sql_ds"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "EmployeeID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "LastName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FirstName",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "EmpMasterSql"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,30 @@
+{
+	"name": "sql_titleMaster_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_database_LS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "sql_ds"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TitleCode",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "TitleDescription",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TitleMasterSql"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

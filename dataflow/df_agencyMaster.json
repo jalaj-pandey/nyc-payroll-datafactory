@@ -1,0 +1,54 @@
+{
+	"name": "df_agencyMaster",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "gen2_agencyMaster_ds",
+						"type": "DatasetReference"
+					},
+					"name": "srcAgencyMaster"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "sql_agencyMaster_ds",
+						"type": "DatasetReference"
+					},
+					"name": "sqlAgencyMaster"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          AgencyID as string,",
+				"          AgencyName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> srcAgencyMaster",
+				"srcAgencyMaster sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          AgencyID as long,",
+				"          AgencyName as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          AgencyID,",
+				"          AgencyName",
+				"     )) ~> sqlAgencyMaster"
+			]
+		}
+	}
+}
